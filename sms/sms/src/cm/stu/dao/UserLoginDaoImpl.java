@@ -8,9 +8,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class TestDao {
-    public static Person Login(Person p) {
-        String sql = "select * from person where userAccount='" + p.getUserAccount() + "' and userPassword='" + p.getUserPassword() + "'";
+public class UserLoginDaoImpl implements UserLoginDao{
+    @Override
+    public Person getLogin(Person person) {
+        String sql = "select * from person where userAccount='" + person.getUserAccount() + "' and userPassword='" + person.getUserPassword() + "'";
         System.out.println(sql);
         Connection connection = ConnectionFactory.getConnection();
         PreparedStatement pre = null;
@@ -37,6 +38,5 @@ public class TestDao {
 
 
         return newPerson;
-
     }
 }

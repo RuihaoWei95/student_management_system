@@ -1,5 +1,8 @@
 package cm.stu.servlet;
 
+import cm.stu.bean.Person;
+import cm.stu.service.UserLoginService;
+import cm.stu.service.UserLoginServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,9 +18,13 @@ public class UserLoginServlet extends HttpServlet {
         // Get Front Page messages
         String userAccount = req.getParameter("userAccount");
         String userPassword = req.getParameter("userPassword");
-        // admin
-        if(userAccount.equals("admin") && userPassword.equals("admin")){
-            // get into admin page
+        Person person = new Person(userAccount, userPassword);
+        UserLoginService ul = new UserLoginServiceImpl();
+        Person newPerson = ul.getLogin(person);
+
+        // login Success
+        if(newPerson!=null){
+            req.setAttribute("person", person);
             req.setAttribute("mainRight", "blank.jsp");
             req.getRequestDispatcher("main.jsp").forward(req, resp);
         }
