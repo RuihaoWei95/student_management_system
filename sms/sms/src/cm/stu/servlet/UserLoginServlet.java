@@ -18,7 +18,7 @@ public class UserLoginServlet extends HttpServlet {
         // admin
         if(userAccount.equals("admin") && userPassword.equals("admin")){
             // get into admin page
-            System.out.println("Enger the admin page!");
+            req.getRequestDispatcher("main.jsp").forward(req, resp);
         }
         else{
             req.setAttribute("tip", "wrong password");
