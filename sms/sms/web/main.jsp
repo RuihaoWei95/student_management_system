@@ -12,8 +12,7 @@
     <style>
 
       #navigation{
-        width: 250px;
-        height: 500px;
+        float:left;
         border: grey 1px solid;
       }
 
@@ -43,5 +42,6 @@
 
 </div>
 
+<jsp:include page="${mainRight=null?'blank.jsp':mainRight}"></jsp:include>
 </body>
 </html>

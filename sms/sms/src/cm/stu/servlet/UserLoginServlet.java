@@ -18,6 +18,7 @@ public class UserLoginServlet extends HttpServlet {
         // admin
         if(userAccount.equals("admin") && userPassword.equals("admin")){
             // get into admin page
+            req.setAttribute("mainRight", "blank.jsp");
             req.getRequestDispatcher("main.jsp").forward(req, resp);
         }
         else{
