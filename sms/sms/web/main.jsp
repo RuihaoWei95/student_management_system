@@ -33,6 +33,8 @@
     </style>
 </head>
 <body>
+<span style="color: grey"> User: ${person.getUserName()}</span>
+<br><br>
 <div id="navigation">
   <li id="file"><a href="common">browse main page</a></li>
   <li id="file"><a href="common">student management</a></li>
