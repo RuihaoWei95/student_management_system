@@ -12,12 +12,12 @@
 </head>
 <body>
 
-<form action="#" method="post" onclick="return checkLogin()">
+<form action="userLogin" method="post" onclick="return checkLogin()">
     account:<input type="text" id = "userAccount" name="userAccount" class="myText"><br>
     password:<input type="password" id = "userPassword" name="userPassword" class="myText"><br>
     <input type="submit" value="Login">
     <input type="submit" value="Signup">
-    <span style="color:red" id="tip"></span>
+    <span style="color:red" id="tip">${tip}</span>
 </form>
 
 
