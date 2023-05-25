@@ -17,7 +17,7 @@
     password:<input type="password" id = "userPassword" name="userPassword" class="myText"><br>
     <input type="submit" value="Login">
     <input type="submit" value="Signup">
-
+    <span style="color:red" id="tip"></span>
 </form>
 
 
@@ -26,6 +26,15 @@
 
 <script>
     function checkLogin(){
-
+        let userAccount = document.getElementById("userAccount").value;
+        let userPassword = document.getElementById("userPassword").value;
+        if(userAccount == null || userAccount.trim()==""){
+            document.getElementById("tip").innerHTML = "account can't be empty!";
+            return false;
+        }
+        if(userPassword == null || userPassword.trim()==""){
+            document.getElementById("tip").innerHTML = "password can't be empty!";
+            return false;
+        }
     }
 </script>
