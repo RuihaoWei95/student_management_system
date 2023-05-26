@@ -24,12 +24,12 @@ public class UserLoginServlet extends HttpServlet {
 
         // login Success
         if(newPerson!=null){
-            req.setAttribute("person", person);
+            req.setAttribute("person", newPerson);
             req.setAttribute("mainRight", "blank.jsp");
             req.getRequestDispatcher("main.jsp").forward(req, resp);
         }
         else{
-            req.setAttribute("tip", "wrong password");
+            req.setAttribute("tip", "account and password doesn't exist!");
             req.getRequestDispatcher("userLogin.jsp").forward(req, resp);
         }
     }
