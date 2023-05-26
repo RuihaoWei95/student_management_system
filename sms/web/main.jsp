@@ -31,17 +31,33 @@
           margin-top: 25px;
       }
     </style>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 </head>
 <body>
-<span style="color: grey; margin-right: 120px"> User: ${person.getUserName()}</span>
+<span style="color: grey; margin-right: 120px"> User: ${session_person.userName}</span>
 <br><br>
 <div id="navigation">
-  <li id="file"><a href="common">browse main page</a></li>
-  <li id="file"><a href="common">student management</a></li>
-  <li id="file"><a href="common">task management</a></li>
-  <li id="file"><a href="common">my information</a></li>
-  <li id="file"><a href="common">exist</a></li>
-
+    <%-- if student--%>
+    <c:if test="${session-person.getUserIdentify()==0}">
+        <li id="file"><a href="common">my profile</a></li>
+        <li id="file"><a href="common">course enrollment</a></li>
+        <li id="file"><a href="common">course details</a></li>
+        <li id="file"><a href="common">exist</a></li>
+    </c:if>
+    <%-- if teacher--%>
+    <c:if test="${session-person.getUserIdentify()==1}">
+        <li id="file"><a href="common">my profile</a></li>
+        <li id="file"><a href="common">course management</a></li>
+        <li id="file"><a href="common">grade tracking</a></li>
+        <li id="file"><a href="common">exist</a></li>
+    </c:if>
+    <%-- if admin --%>
+    <c:if test="${session-person.getUserIdentify()==2}">
+        <li id="file"><a href="common">course management</a></li>
+        <li id="file"><a href="common">instructor management</a></li>
+        <li id="file"><a href="common">student management</a></li>
+        <li id="file"><a href="common">exist</a></li>
+    </c:if>
 </div>
 
 <jsp:include page="${mainRight=null?'blank.jsp':mainRight}"></jsp:include>
