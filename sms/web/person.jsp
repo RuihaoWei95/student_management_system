@@ -53,6 +53,8 @@
     <td class="lf">身份证号码</td>
     <td class="lf">角色</td>
     <td class="lf">其他名称</td>
+    <td class="lf">删除</td>
+    <td class="lf">修改</td>
   </tr>
   </thead>
   <tbody>
@@ -72,7 +74,10 @@
           老师
         </c:if>
       </td>
-      <td class="lf">${person.getUserOtherName()}</td></tr>
+      <td class="lf">${person.getUserOtherName()}</td>
+      <td><img src="del.png" onclick="deleteThisPerson('${person.getUserAccount()}')"></td>
+      <td><img src="up.jpg" onclick="upThisPerson('${person.getUserAccount()}')"></td>
+    </tr>
   </c:forEach>
   </tbody>
 
@@ -80,5 +85,14 @@
 </table>
 
 </body>
+
+<script>
+  function deleteThisPerson(userAccount){
+    alert("删除" + userAccount)
+  }
+  function upThisPerson(userAccount){
+    alert("修改：" + userAccount)
+  }
+</script>
 </html>
 
