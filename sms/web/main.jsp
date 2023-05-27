@@ -32,6 +32,7 @@
       }
     </style>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <link href="${pageContext.request.contextPath}/css/table.css" rel="stylesheet" media="screen">
 </head>
 <body>
 <span style="color: grey; margin-right: 120px"> User: ${session_person.userName}</span>
@@ -50,13 +51,13 @@
         <li id="file"><a href="common.action?action=index">main page</a></li>
         <li id="file"><a href="common">my profile</a></li>
         <li id="file"><a href="common">course management</a></li>
-        <li id="file"><a href="common">student management</a></li>
+        <li id="file"><a href="tea.action?action=list">student management</a></li>
         <li id="file"><a href="common">exist</a></li>
     </c:if>
     <%-- if admin --%>
     <c:if test="${session_person.getUserIdentify()==2}">
         <li id="file"><a href="common.action?action=index">main page</a></li>
-        <li id="file"><a href="common">course management</a></li>
+        <li id="file"><a href="man.action?action=list">people management</a></li>
         <li id="file"><a href="common">instructor management</a></li>
         <li id="file"><a href="common">student management</a></li>
         <li id="file"><a href="common">exist</a></li>
