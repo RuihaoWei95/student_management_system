@@ -44,7 +44,7 @@
         <li id="file"><a href="common">my profile</a></li>
         <li id="file"><a href="common">course enrollment</a></li>
         <li id="file"><a href="common">course details</a></li>
-        <li id="file"><a href="common">exist</a></li>
+        <li id="file"><a href="outLogin">exist</a></li>
     </c:if>
     <%-- if teacher--%>
     <c:if test="${session_person.getUserIdentify()==1}">
@@ -52,7 +52,7 @@
         <li id="file"><a href="common">my profile</a></li>
         <li id="file"><a href="common">course management</a></li>
         <li id="file"><a href="tea.action?action=list">student management</a></li>
-        <li id="file"><a href="common">exist</a></li>
+        <li id="file"><a href="outLogin">exist</a></li>
     </c:if>
     <%-- if admin --%>
     <c:if test="${session_person.getUserIdentify()==2}">
@@ -60,7 +60,7 @@
         <li id="file"><a href="man.action?action=list">people management</a></li>
         <li id="file"><a href="common">instructor management</a></li>
         <li id="file"><a href="common">student management</a></li>
-        <li id="file"><a href="common">exist</a></li>
+        <li id="file"><a href="outLogin">exist</a></li>
     </c:if>
 </div>
 
