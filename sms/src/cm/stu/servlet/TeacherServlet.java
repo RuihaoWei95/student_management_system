@@ -1,8 +1,6 @@
 package cm.stu.servlet;
 
-import cm.stu.bean.Person;
-import cm.stu.bean.StudentAnswer;
-import cm.stu.bean.Task;
+import cm.stu.bean.*;
 import cm.stu.service.TeacherService;
 import cm.stu.service.TeacherServiceImpl;
 
@@ -31,11 +29,22 @@ public class TeacherServlet extends HttpServlet {
             req.setAttribute("mainRight", "person.jsp");
             req.getRequestDispatcher("main.jsp").forward(req, resp);
 
-        } else if (action.equals("goMyTask")) {
-            //tea.action?action=goMyTask
-            List<Task> arr = ts.getAllMyTask(userAccount);
+        } else if (action.equals("studentGrades")) {
+            //tea.action?action=studentGrades
+            List<CourseGrade> arr = ts.getAllMyCourseGrade(userAccount);
             req.setAttribute("arr", arr);
-            req.setAttribute("mainRight", "task.jsp");
+            req.setAttribute("mainRight", "courseGrade.jsp");
+            req.getRequestDispatcher("main.jsp").forward(req, resp);
+
+
+        } else if (action.equals("gradeDetails")) {
+            //tea.action?action=gradeDetails&courseId=courseId
+            String courseId = req.getParameter("courseId");
+            List<StudentGrade> arr = ts.getStudentGrade(courseId);
+            System.out.println(courseId);
+            System.out.println(arr);
+            req.setAttribute("arr", arr);
+            req.setAttribute("mainRight", "studentGrade.jsp");
             req.getRequestDispatcher("main.jsp").forward(req, resp);
 
 

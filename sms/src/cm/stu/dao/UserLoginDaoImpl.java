@@ -21,15 +21,13 @@ public class UserLoginDaoImpl implements UserLoginDao{
             res = pre.executeQuery();
             while(res.next()){
                 newPerson = new Person();
-                //`userAccount``userName``userSex``userBirthday``userIdCard``userPassword``userIdentify``userOtherName`
+                //`userAccount``userName``userBirthday``userIdCard``userPassword``userIdentify`
                 newPerson.setUserAccount(res.getString("userAccount"));
+                newPerson.setUserPassword(res.getString("userPassword"));
                 newPerson.setUserName(res.getString("userName"));
-                newPerson.setUserSex(res.getString("userSex"));
                 newPerson.setUserBirthday(res.getString("userBirthday"));
                 newPerson.setUserIdCard(res.getString("userIdCard"));
-                newPerson.setUserPassword(res.getString("userPassword"));
                 newPerson.setUserIdentify(res.getInt("userIdentify"));
-                newPerson.setUserOtherName(res.getString("userOtherName"));
             }
 
         } catch (SQLException e) {

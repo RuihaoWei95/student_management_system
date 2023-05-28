@@ -49,8 +49,8 @@
     <%-- if teacher--%>
     <c:if test="${session_person.getUserIdentify()==1}">
         <li id="file"><a href="common.action?action=index">main page</a></li>
-        <li id="file"><a href="tea.action?action=list">student management</a></li>
-        <li id="file"><a href="tea.action?action=goMyTask">task management</a></li>
+        <%--<li id="file"><a href="tea.action?action=list">student management</a></li>--%>
+        <li id="file"><a href="tea.action?action=studentGrades">student grades</a></li>
         <li id="file"><a href="common">my profile</a></li>
         <li id="file"><a href="outLogin">exist</a></li>
     </c:if>
