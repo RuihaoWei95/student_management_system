@@ -11,6 +11,7 @@ import java.io.IOException;
 public class CommonServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         String action = req.getParameter("action");
 
         if(action.equals("index")){

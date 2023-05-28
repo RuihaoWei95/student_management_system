@@ -16,6 +16,7 @@ import java.util.List;
 public class ManageServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         String action = req.getParameter("action");
         ManageService ms = new ManageServiceImpl();
 
