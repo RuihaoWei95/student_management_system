@@ -1,7 +1,6 @@
 package cm.stu.dao;
 
-import cm.stu.bean.StudentAnswer;
-import cm.stu.bean.Task;
+import cm.stu.bean.*;
 
 import java.util.List;
 
@@ -11,4 +10,10 @@ public interface TeacherDao {
     List<Task> getAllMyTask(String userAccount);
 
     List<StudentAnswer> getTaskDetail(String taskAccount);
+
+    List<Course> getAllMyCourse(String userAccount);
+
+    List<CourseGrade> getAllMyCourseGrade(String userAccount);
+
+    List<StudentGrade> getStudentGrade(String courseId);
 }

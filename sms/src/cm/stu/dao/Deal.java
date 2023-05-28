@@ -1,8 +1,6 @@
 package cm.stu.dao;
 
-import cm.stu.bean.Person;
-import cm.stu.bean.StudentAnswer;
-import cm.stu.bean.Task;
+import cm.stu.bean.*;
 import cm.stu.util.ConnectionFactory;
 
 import java.sql.Connection;
@@ -89,6 +87,83 @@ public class Deal {
                 sa.setTaskName(res.getString("taskName"));
                 list.add(sa);
             }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+
+        }
+        return list;
+    }
+
+    public static List<Course> getAllCourse(String sql) {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement pre = null;
+        ResultSet res = null;
+        List<Course> list = new ArrayList<>();
+        try{
+            pre = connection.prepareStatement(sql);
+            res = pre.executeQuery();
+            while(res.next()){
+                Course course = new Course();
+                course.setCourseName(res.getString("CourseName"));
+                course.setCourseId(res.getString("CourseId"));
+                course.setCourseTime(res.getString("CourseTime"));
+                list.add(course);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+
+        }
+        return list;
+    }
+
+    public static List<CourseGrade> getAllCourseGrade(String sql) {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement pre = null;
+        ResultSet res = null;
+        List<CourseGrade> list = new ArrayList<>();
+        try{
+            pre = connection.prepareStatement(sql);
+            res = pre.executeQuery();
+            while(res.next()){
+                CourseGrade courseGrade = new CourseGrade();
+                courseGrade.setCourseName(res.getString("CourseName"));
+                courseGrade.setCourseTime(res.getString("CourseTime"));
+                courseGrade.setCourseId(res.getString("CourseID"));
+                courseGrade.setLow(res.getDouble("low"));
+                courseGrade.setMedian(res.getDouble("mean"));
+                courseGrade.setHigh(res.getDouble("high"));
+                list.add(courseGrade);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+
+        }
+        return list;
+    }
+
+    public static List<StudentGrade> getStudentGrade(String sql) {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement pre = null;
+        ResultSet res = null;
+        List<StudentGrade> list = new ArrayList<>();
+        try{
+            pre = connection.prepareStatement(sql);
+            res = pre.executeQuery();
+            while(res.next()){
+                StudentGrade studentGrade = new StudentGrade();
+                //'userName', 'userIdCard', 'score'
+                studentGrade.setUserAccount(res.getString("userName"));
+                studentGrade.setUserIdCard(res.getString("userIdCard"));
+                studentGrade.setGrade(res.getDouble("score"));
+                list.add(studentGrade);
+            }
+            System.out.println(list);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

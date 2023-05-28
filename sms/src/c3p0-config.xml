@@ -2,7 +2,7 @@
 <c3p0-config>
 	<default-config>
 		<property name="driverClass">com.mysql.cj.jdbc.Driver</property>
-		<property name="jdbcUrl">jdbc:mysql://localhost:3306/astu?useSSL=false&amp;serverTimezone=Asia/Shanghai&amp;characterEncoding=utf-8&amp;autoReconnect=true</property>
+		<property name="jdbcUrl">jdbc:mysql://localhost:3306/sms?useSSL=false&amp;serverTimezone=Asia/Shanghai&amp;characterEncoding=utf-8&amp;autoReconnect=true</property>
 		<property name="user">root</property>
 		<property name="password">admin</property>
 		<property name="acquireIncrement">10</property>

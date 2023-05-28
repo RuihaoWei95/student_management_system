@@ -1,7 +1,6 @@
 package cm.stu.service;
 
-import cm.stu.bean.StudentAnswer;
-import cm.stu.bean.Task;
+import cm.stu.bean.*;
 import cm.stu.dao.TeacherDao;
 import cm.stu.dao.TeacherDaoImpl;
 
@@ -23,4 +22,20 @@ public class TeacherServiceImpl implements TeacherService{
     public List<StudentAnswer> getTaskDetail(String taskAccount) {
         return td.getTaskDetail(taskAccount);
     }
+
+    @Override
+    public List<Course> getAllMyCourse(String userAccount) {
+        return td.getAllMyCourse(userAccount);
+    }
+
+    @Override
+    public List<CourseGrade> getAllMyCourseGrade(String userAccount) {
+        return td.getAllMyCourseGrade(userAccount);
+    }
+
+    @Override
+    public List<StudentGrade> getStudentGrade(String courseId) {
+        return td.getStudentGrade(courseId);
+    }
+
 }
