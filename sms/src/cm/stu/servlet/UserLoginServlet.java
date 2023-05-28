@@ -16,6 +16,7 @@ import java.io.IOException;
 public class UserLoginServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         // Get Front Page messages
         String userAccount = req.getParameter("userAccount");
         String userPassword = req.getParameter("userPassword");

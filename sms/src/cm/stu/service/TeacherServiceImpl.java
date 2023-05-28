@@ -1,5 +1,6 @@
 package cm.stu.service;
 
+import cm.stu.bean.Task;
 import cm.stu.dao.TeacherDao;
 import cm.stu.dao.TeacherDaoImpl;
 
@@ -10,5 +11,10 @@ public class TeacherServiceImpl implements TeacherService{
     @Override
     public List AllStudentsByTeacherAccount(String userAccount) {
         return td.AllStudentsByTeacherAccount(userAccount);
+    }
+
+    @Override
+    public List<Task> getAllMyTask(String userAccount) {
+        return td.getAllMyTask(userAccount);
     }
 }

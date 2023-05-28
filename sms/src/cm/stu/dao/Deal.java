@@ -1,6 +1,7 @@
 package cm.stu.dao;
 
 import cm.stu.bean.Person;
+import cm.stu.bean.Task;
 import cm.stu.util.ConnectionFactory;
 
 import java.sql.Connection;
@@ -40,5 +41,31 @@ public class Deal {
         }
         return list;
 
+    }
+
+    public static List<Task> getAllTask(String sql) {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement pre = null;
+        ResultSet res = null;
+        List<Task> list = new ArrayList<>();
+        try{
+            pre = connection.prepareStatement(sql);
+            res = pre.executeQuery();
+            while(res.next()){
+                Task task = new Task();
+                task.setTaskAccount(res.getString("taskAccount"));
+                task.setTaskDate(res.getString("taskDate"));
+                task.setTaskName(res.getString("taskName"));
+                task.setTeacherAccount(res.getString("teacherAccount"));
+
+                list.add(task);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+
+        }
+        return list;
     }
 }
