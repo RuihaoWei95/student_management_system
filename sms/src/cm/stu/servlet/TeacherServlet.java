@@ -22,14 +22,7 @@ public class TeacherServlet extends HttpServlet {
         Person person = (Person) req.getSession().getAttribute("session_person");
         String userAccount = person.getUserAccount();
 
-        if(action.equals("list")){
-            //get all students
-            List arr = ts.AllStudentsByTeacherAccount(userAccount);
-            req.setAttribute("arr", arr);
-            req.setAttribute("mainRight", "person.jsp");
-            req.getRequestDispatcher("main.jsp").forward(req, resp);
-
-        } else if (action.equals("studentGrades")) {
+        if (action.equals("studentGrades")) {
             //tea.action?action=studentGrades
             List<CourseGrade> arr = ts.getAllMyCourseGrade(userAccount);
             req.setAttribute("arr", arr);
@@ -47,14 +40,6 @@ public class TeacherServlet extends HttpServlet {
             req.setAttribute("mainRight", "studentGrade.jsp");
             req.getRequestDispatcher("main.jsp").forward(req, resp);
 
-
-        } else if(action.equals("goSkimDetail")){
-            //tea.action?action=goSkimDetail&taskAccount=" + taskAccount;
-            String taskAccount = req.getParameter("taskAccount");
-            List<StudentAnswer> arr = ts.getTaskDetail(taskAccount);
-            req.setAttribute("arr", arr);
-            req.setAttribute("mainRight", "studentTask.jsp");
-            req.getRequestDispatcher("main.jsp").forward(req, resp);
 
         }
     }

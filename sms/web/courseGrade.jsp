@@ -70,10 +70,10 @@
       <td class="lf">${course_grade.getMedian()}</td>
       <td class="lf">${course_grade.getHigh()}</td>
       <td class="lf">
-        <img style="width:40px;height: 40px" onclick="goCourseGrade('${course_grade.getCourseId()}')"  src="detail.jpg">
+        <img style="width:40px;height: 40px"  src="detail.jpg" onclick="goCourseGrade('${course_grade.getCourseId()}')">
       </td>
     </tr>
-  </c:forEach>window.location.href =
+  </c:forEach>
   </tbody>
 
 
@@ -83,7 +83,7 @@
 
 <script>
   function goCourseGrade(courseId){
-    window.location.href = "tea.action?action=gradeDetails&courseId=" + courseId
+    window.location.href = "tea.action?action=gradeDetails&courseId=" + courseId;
   }
 </script>
 
