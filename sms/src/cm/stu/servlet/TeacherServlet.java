@@ -1,6 +1,7 @@
 package cm.stu.servlet;
 
 import cm.stu.bean.Person;
+import cm.stu.bean.StudentAnswer;
 import cm.stu.bean.Task;
 import cm.stu.service.TeacherService;
 import cm.stu.service.TeacherServiceImpl;
@@ -40,6 +41,11 @@ public class TeacherServlet extends HttpServlet {
 
         } else if(action.equals("goSkimDetail")){
             //tea.action?action=goSkimDetail&taskAccount=" + taskAccount;
+            String taskAccount = req.getParameter("taskAccount");
+            List<StudentAnswer> arr = ts.getTaskDetail(taskAccount);
+            req.setAttribute("arr", arr);
+            req.setAttribute("mainRight", "studentTask.jsp");
+            req.getRequestDispatcher("main.jsp").forward(req, resp);
 
         }
     }

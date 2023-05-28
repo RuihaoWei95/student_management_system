@@ -65,7 +65,7 @@
       <td class="lf">${task.getTaskAccount()}</td>
       <td class="lf">${task.getTaskName()}</td>
       <td class="lf">${task.getTaskDate()}</td>
-      <td class="lf"><img src="up.jpg" onclick="skimDetail('${task.getTaskAccount()}')"></td>
+      <td class="lf"><img style="width:40px;height:40px" src="del.jpg" onclick="skimDetail('${task.getTaskAccount()}')"></td>
     </tr>
   </c:forEach>
   </tbody>
