@@ -25,9 +25,22 @@ public class Person {
         this.userOtherName = userOtherName;
     }
 
+    public Person(String userAccount, String userName, String userBirthday, String userIdCard, String userPassword, int userIdentify) {
+        this.userAccount = userAccount;
+        this.userName = userName;
+        this.userBirthday = userBirthday;
+        this.userIdCard = userIdCard;
+        this.userPassword = userPassword;
+        this.userIdentify = userIdentify;
+    }
+
     public Person(String userAccount, String userPassword) {
         this.userAccount = userAccount;
         this.userPassword = userPassword;
+    }
+
+    public Person(String userAccount){
+        this.userAccount = userAccount;
     }
 
     public String getUserAccount() {

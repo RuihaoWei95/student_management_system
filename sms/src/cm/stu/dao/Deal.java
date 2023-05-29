@@ -24,12 +24,10 @@ public class Deal {
                 //`userAccount``userName``userSex``userBirthday``userIdCard``userPassword``userIdentify``userOtherName`
                 newPerson.setUserAccount(res.getString("userAccount"));
                 newPerson.setUserName(res.getString("userName"));
-                newPerson.setUserSex(res.getString("userSex"));
                 newPerson.setUserBirthday(res.getString("userBirthday"));
                 newPerson.setUserIdCard(res.getString("userIdCard"));
                 newPerson.setUserPassword(res.getString("userPassword"));
                 newPerson.setUserIdentify(res.getInt("userIdentify"));
-                newPerson.setUserOtherName(res.getString("userOtherName"));
                 list.add(newPerson);
             }
 
@@ -94,4 +92,39 @@ public class Deal {
         }
         return list;
     }
+
+    public static void deal(String sql) throws Exception{
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement pre = null;
+        ResultSet res = null;
+        try {
+            pre = connection.prepareStatement(sql);
+            pre.execute();
+        } catch (Exception e) {
+            throw e;
+        }finally {
+
+        }
+    }
+
+    public static int isExist(String sql) {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement pre = null;
+        ResultSet res = null;
+        int num=0;
+        try {
+            pre =connection.prepareStatement(sql);
+            res = pre.executeQuery();
+            while(res.next()){
+                num = res.getInt("num");
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }finally {
+
+        }
+        return num;
+    }
 }
+

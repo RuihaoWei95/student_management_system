@@ -17,4 +17,11 @@ public class ManageDaoImpl implements ManageDao{
         return Deal.getAllPerson(sql);
     }
 
+    @Override
+    public void addPerson(Person newPerson) throws Exception {
+        String sql = "INSERT INTO person (userAccount, userName, userBirthday, userIdCard, userIdentify, userPassword) values('"+newPerson.getUserAccount()+"','"+newPerson.getUserName()+"','"+newPerson.getUserBirthday()+"','"+newPerson.getUserIdCard()+"','"+newPerson.getUserIdentify()+"','"+newPerson.getUserPassword()+"')";
+        System.out.println(sql);
+        Deal.deal(sql);
+    }
+
 }

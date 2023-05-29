@@ -12,4 +12,9 @@ public class ManageServiceImpl implements ManageService{
     public List<Person> getAllPerson() {
         return md.getAllPerson();
     }
+
+    @Override
+    public void addPerson(Person newPerson) throws Exception {
+        md.addPerson(newPerson);
+    }
 }
