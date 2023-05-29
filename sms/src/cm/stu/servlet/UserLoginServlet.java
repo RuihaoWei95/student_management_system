@@ -17,24 +17,24 @@ public class UserLoginServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
+        UserLoginService ul = new UserLoginServiceImpl();
         // Get Front Page messages
         String userAccount = req.getParameter("userAccount");
         String userPassword = req.getParameter("userPassword");
         Person person = new Person(userAccount, userPassword);
-        UserLoginService ul = new UserLoginServiceImpl();
         Person newPerson = ul.getLogin(person);
 
         // login Success
-        if(newPerson!=null){
+        if (newPerson != null) {
             HttpSession session = req.getSession();
             session.setAttribute("session_person", newPerson);
 
             req.setAttribute("mainRight", "blank.jsp");
             req.getRequestDispatcher("main.jsp").forward(req, resp);
-        }
-        else{
+        } else {
             req.setAttribute("tip", "account and password doesn't exist!");
             req.getRequestDispatcher("userLogin.jsp").forward(req, resp);
         }
+
     }
 }

@@ -34,8 +34,6 @@ public class TeacherServlet extends HttpServlet {
             //tea.action?action=gradeDetails&courseId=courseId
             String courseId = req.getParameter("courseId");
             List<StudentGrade> arr = ts.getStudentGrade(courseId);
-            System.out.println(courseId);
-            System.out.println(arr);
             req.setAttribute("arr", arr);
             req.setAttribute("mainRight", "studentGrade.jsp");
             req.getRequestDispatcher("main.jsp").forward(req, resp);

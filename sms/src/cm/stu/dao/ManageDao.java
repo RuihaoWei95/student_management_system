@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ManageDao {
     List<Person> getAllPerson();
+
+    void addPerson(Person newPerson) throws Exception;
 }

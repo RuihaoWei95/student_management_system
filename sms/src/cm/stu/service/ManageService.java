@@ -7,4 +7,6 @@ import java.util.List;
 public interface ManageService {
 
     List<Person> getAllPerson();
+
+    void addPerson(Person newPerson) throws Exception;
 }

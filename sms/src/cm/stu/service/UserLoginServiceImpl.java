@@ -8,6 +8,12 @@ public class UserLoginServiceImpl implements UserLoginService {
     UserLoginDao ud = new UserLoginDaoImpl();
     @Override
     public Person getLogin(Person person) {
+
         return ud.getLogin(person);
+    }
+
+    @Override
+    public Person checkAccount(Person account) {
+        return ud.checkAccount(account);
     }
 }

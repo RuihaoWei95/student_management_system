@@ -39,4 +39,30 @@ public class UserLoginDaoImpl implements UserLoginDao{
 
         return newPerson;
     }
+
+    @Override
+    public Person checkAccount(Person account) {
+        String sql = "select * from person where userAccount='" + account.getUserAccount() + "'";
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement pre = null;
+        ResultSet res = null;
+        Person newAccount = null;
+        try{
+            pre = connection.prepareStatement(sql);
+            res = pre.executeQuery();
+            while(res.next()){
+                newAccount = new Person();
+                //`userAccount``userName``userBirthday``userIdCard``userPassword``userIdentify`
+                newAccount.setUserAccount(res.getString("userAccount"));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+
+        }
+
+
+        return newAccount;
+    }
 }

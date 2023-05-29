@@ -4,4 +4,6 @@ import cm.stu.bean.Person;
 
 public interface UserLoginDao {
     Person getLogin(Person person);
+
+    Person checkAccount(Person account);
 }
