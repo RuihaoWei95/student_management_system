@@ -23,6 +23,7 @@
 <body>
 <div id="content">
   <h1>welcome to student management system!</h1>
+    <span style="font-size: 10px;color: red">${tip}</span>
 </div>
 
 </body>

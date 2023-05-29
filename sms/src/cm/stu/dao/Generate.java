@@ -16,4 +16,9 @@ public class Generate {
         String sql = "select count(*) num from person where userAccount='"+userAccount+"'";
         return Deal.isExist(sql);
     }
+
+    public static int IsExistCourse(String userAccount, String courseId, String number) {
+        String sql = "select count(*) num from studentcourse where courseId='"+courseId+"' and userAccount='"+userAccount+"'";
+        return Deal.isExist(sql);
+    }
 }
