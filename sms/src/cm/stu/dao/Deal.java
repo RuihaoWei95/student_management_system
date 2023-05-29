@@ -126,5 +126,28 @@ public class Deal {
         }
         return num;
     }
+
+    public static List<StudentCourse> getStudentCourse(String sql) {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement pre = null;
+        ResultSet res = null;
+        List<StudentCourse> list = new ArrayList<>();
+        try {
+            pre =connection.prepareStatement(sql);
+            res = pre.executeQuery();
+            while(res.next()){
+                StudentCourse record = new StudentCourse();
+                record.setUID(res.getString("UID"));
+                record.setUserAccount(res.getString("userAccount"));
+                record.setCourseId(res.getString("courseId"));
+                record.setScore(res.getDouble("score"));
+                list.add(record);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }finally {
+        }
+        return list;
+    }
 }
 
