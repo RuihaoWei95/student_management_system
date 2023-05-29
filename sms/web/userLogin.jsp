@@ -16,7 +16,7 @@
     account:<input type="text" id = "userAccount" name="userAccount" class="myText"><br>
     password:<input type="password" id = "userPassword" name="userPassword" class="myText"><br>
     <input type="submit" value="Login">
-    <input type="button" value="Signup" onclick="redirectToPage('addPerson.jsp')">
+    <input type="button" value="Signup" onclick="redirectToPage('signUp.jsp')">
     <span style="color:red" id="tip">${tip}</span>
 </form>
 

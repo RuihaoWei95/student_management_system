@@ -66,7 +66,7 @@ public class ManageServlet extends HttpServlet {
         } else if (action.equals("goAddPerson")) {
             req.setAttribute("mainRight", "addPerson.jsp");
             req.getRequestDispatcher("main.jsp").forward(req, resp);
-        }else if (action.equals("addThisPerson")) {
+        }else if (action.equals("signUp")) {
             String userAccount = req.getParameter("userAccount");
             String userName = req.getParameter("userName");
             String userBirthday = req.getParameter("userBirthday");
