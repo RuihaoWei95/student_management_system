@@ -54,11 +54,11 @@
     </c:if>
     <%-- if admin --%>
     <c:if test="${session_person.getUserIdentify()==2}">
-        <li id="file"><a href="common.action?action=index">main page</a></li>
-        <li id="file"><a href="man.action?action=list">people management</a></li>
-        <li id="file"><a href="common">instructor management</a></li>
-        <li id="file"><a href="common">student management</a></li>
-        <li id="file"><a href="outLogin">exist</a></li>
+        <li id="file"><a href="common.action?action=index">查看首页</a></li>
+        <li id="file"><a href="man.action?action=list">user management</a></li>
+        <li id="file"><a href="man.action?action=goAddPerson">人员添加</a></li>
+        <li id="file"><a href="common.action?action=goMyDetail">my profile</a></li>
+        <li id="file"><a href="outLogin">退出系统</a></li>
     </c:if>
 </div>
 

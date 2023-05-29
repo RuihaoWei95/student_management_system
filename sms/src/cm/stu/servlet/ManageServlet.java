@@ -21,10 +21,50 @@ public class ManageServlet extends HttpServlet {
         String action = req.getParameter("action");
         ManageService ms = new ManageServiceImpl();
 
-        if(action.equals("list")){
-            List<Person> arr = ms.getAllPerson();
+        if (action.equals("list") || action.equals("search")||action.equals("delThisPerson") || action.equals("editThisPerson") || action.equals("addThisPerson")) {
+            //man.action?action=delThisPerson&userAccount="+userAccount+"&userIdentify="+userIdentify
+            List<Person> arr;
+            if (action.equals("list")||action.equals("delThisPerson") || action.equals("editThisPerson") || action.equals("addThisPerson")) {
+                if(action.equals("delThisPerson")){
+                    String delAccount = req.getParameter("userAccount");
+                    String userIdentify =  req.getParameter("userIdentify");
+                    try {
+                        ms.delThisPerson(delAccount,userIdentify);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                }else if(action.equals("editThisPerson")){
+                    String userAccount = req.getParameter("userAccount");
+                    String userName = req.getParameter("userName");
+                    String userBirthday = req.getParameter("userBirthday");
+                    String userIdCard = req.getParameter("userIdCard");
+                    int userIdentify = Integer.parseInt(req.getParameter("userIdentify"));
+                    try {
+                        ms.editThisPerson(userAccount,userName,userBirthday,userIdCard,userIdentify);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                }else if(action.equals("addThisPerson")){
+                    String userAccount = req.getParameter("userAccount");
+                    String userName = req.getParameter("userName");
+                    String userBirthday = req.getParameter("userBirthday");
+                    String userIdCard = req.getParameter("userIdCard");
+                    int userIdentify = Integer.parseInt(req.getParameter("userIdentify"));
+                    try {
+                        ms.addThisPerson(userAccount,userName,userBirthday,userIdCard,userIdentify);
+                    } catch (Exception e) {
+                    }
+                }
+                arr = ms.getAllPerson();
+            } else {
+                String matchText = (req.getParameter("matchText")).trim();
+                arr = ms.getSearch(matchText);
+            }
             req.setAttribute("arr", arr);
             req.setAttribute("mainRight", "person.jsp");
+            req.getRequestDispatcher("main.jsp").forward(req, resp);
+        } else if (action.equals("goAddPerson")) {
+            req.setAttribute("mainRight", "addPerson.jsp");
             req.getRequestDispatcher("main.jsp").forward(req, resp);
         }else if (action.equals("addThisPerson")) {
             String userAccount = req.getParameter("userAccount");
