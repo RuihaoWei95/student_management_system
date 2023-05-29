@@ -1,5 +1,6 @@
 package cm.stu.dao;
 
+import cm.stu.bean.Course;
 import cm.stu.bean.Person;
 import cm.stu.util.ConnectionFactory;
 
@@ -61,6 +62,30 @@ public class ManageDaoImpl implements ManageDao{
     public void addThisPerson(String userAccount, String userName, String userBirthday, String userIdCard, int userIdentify) throws Exception {
         String sql = "INSERT INTO person (userAccount, userName, userBirthday, userIdCard, userIdentify, userPassword) VALUES ('" + userAccount + "', '" + userName + "', '" + userBirthday + "', '" + userIdCard + "', '" + userIdentify + "', '1')";
         Deal.deal(sql);
+    }
+
+    @Override
+    public void delThisCourse(String courseId) throws Exception {
+        String sql = "DELETE FROM course WHERE courseId = '"+courseId+"'";
+        Deal.deal(sql);
+    };
+
+    @Override
+    public void editThisCourse(String courseName,String courseId,String courseTime) throws Exception {
+        String sql = "UPDATE course SET courseName = '"+courseName+"', courseTime = '"+courseTime+"' WHERE courseId = '"+courseId+"'";
+        Deal.deal(sql);
+    };
+
+    @Override
+    public void addThisCourse(String courseName,String courseId,String courseTime) throws Exception {
+        String sql = "INSERT INTO course (courseName, courseId, courseTime) VALUES ('" + courseName + "', '" + courseId + "', '" + courseTime + "')";
+        Deal.deal(sql);
+    };
+
+    @Override
+    public List<Course> getAllCourse() {
+        String sql = "select * from course";
+        return Deal.getAllCourse(sql);
     }
 
 }

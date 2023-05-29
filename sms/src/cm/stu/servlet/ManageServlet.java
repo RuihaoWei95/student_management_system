@@ -1,5 +1,6 @@
 package cm.stu.servlet;
 
+import cm.stu.bean.Course;
 import cm.stu.bean.Person;
 import cm.stu.service.ManageService;
 import cm.stu.service.ManageServiceImpl;
@@ -21,52 +22,79 @@ public class ManageServlet extends HttpServlet {
         String action = req.getParameter("action");
         ManageService ms = new ManageServiceImpl();
 
-        if (action.equals("list") || action.equals("search")||action.equals("delThisPerson") || action.equals("editThisPerson") || action.equals("addThisPerson")) {
-            //man.action?action=delThisPerson&userAccount="+userAccount+"&userIdentify="+userIdentify
-            List<Person> arr;
-            if (action.equals("list")||action.equals("delThisPerson") || action.equals("editThisPerson") || action.equals("addThisPerson")) {
-                if(action.equals("delThisPerson")){
-                    String delAccount = req.getParameter("userAccount");
-                    String userIdentify =  req.getParameter("userIdentify");
-                    try {
-                        ms.delThisPerson(delAccount,userIdentify);
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
-                }else if(action.equals("editThisPerson")){
-                    String userAccount = req.getParameter("userAccount");
-                    String userName = req.getParameter("userName");
-                    String userBirthday = req.getParameter("userBirthday");
-                    String userIdCard = req.getParameter("userIdCard");
-                    int userIdentify = Integer.parseInt(req.getParameter("userIdentify"));
-                    try {
-                        ms.editThisPerson(userAccount,userName,userBirthday,userIdCard,userIdentify);
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
-                }else if(action.equals("addThisPerson")){
-                    String userAccount = req.getParameter("userAccount");
-                    String userName = req.getParameter("userName");
-                    String userBirthday = req.getParameter("userBirthday");
-                    String userIdCard = req.getParameter("userIdCard");
-                    int userIdentify = Integer.parseInt(req.getParameter("userIdentify"));
-                    try {
-                        ms.addThisPerson(userAccount,userName,userBirthday,userIdCard,userIdentify);
-                    } catch (Exception e) {
-                    }
+        //manage the person list
+        if (action.equals("personlist") || action.equals("delThisPerson") || action.equals("editThisPerson") || action.equals("addThisPerson")) {
+            List<Person> personArr;
+            if(action.equals("delThisPerson")){
+                String delAccount = req.getParameter("userAccount");
+                String userIdentify =  req.getParameter("userIdentify");
+                try {
+                    ms.delThisPerson(delAccount,userIdentify);
+                } catch (Exception e) {
+
                 }
-                arr = ms.getAllPerson();
-            } else {
-                String matchText = (req.getParameter("matchText")).trim();
-                arr = ms.getSearch(matchText);
+            }else if(action.equals("editThisPerson")){
+                String userAccount = req.getParameter("userAccount");
+                String userName = req.getParameter("userName");
+                String userBirthday = req.getParameter("userBirthday");
+                String userIdCard = req.getParameter("userIdCard");
+                int userIdentify = Integer.parseInt(req.getParameter("userIdentify"));
+                try {
+                    ms.editThisPerson(userAccount,userName,userBirthday,userIdCard,userIdentify);
+                } catch (Exception e) {
+
+                }
+            }else if(action.equals("addThisPerson")){
+                String userAccount = req.getParameter("userAccount");
+                String userName = req.getParameter("userName");
+                String userBirthday = req.getParameter("userBirthday");
+                String userIdCard = req.getParameter("userIdCard");
+                int userIdentify = Integer.parseInt(req.getParameter("userIdentify"));
+                try {
+                    ms.addThisPerson(userAccount,userName,userBirthday,userIdCard,userIdentify);
+                } catch (Exception e) {
+
+                }
             }
-            req.setAttribute("arr", arr);
+            personArr = ms.getAllPerson();
+            req.setAttribute("arr", personArr);
             req.setAttribute("mainRight", "person.jsp");
             req.getRequestDispatcher("main.jsp").forward(req, resp);
-        } else if (action.equals("goAddPerson")) {
-            req.setAttribute("mainRight", "addPerson.jsp");
+
+            //manage the course list
+        } else if (action.equals("courselist")|| action.equals("delThisCourse") || action.equals("editThisCourse") || action.equals("addThisCourse")) {
+            if(action.equals("delThisCourse")){
+                String courseId = req.getParameter("courseId");
+                try {
+                    ms.delThisCourse(courseId);
+                } catch (Exception e) {
+
+                }
+            }else if(action.equals("editThisCourse")){
+                String courseName = req.getParameter("courseName");
+                String courseId = req.getParameter("courseId");
+                String courseTime = req.getParameter("courseTime");
+                try {
+                    ms.editThisCourse(courseName,courseId,courseTime);
+                } catch (Exception e) {
+
+                }
+            }else if(action.equals("addThisCourse")){
+                String courseName = req.getParameter("courseName");
+                String courseId = req.getParameter("courseId");
+                String courseTime = req.getParameter("courseTime");
+                try {
+                    ms.addThisCourse(courseName,courseId,courseTime);
+                } catch (Exception e) {
+
+                }
+            }
+            List<Course> courseArr;
+            courseArr = ms.getAllCourse();
+            req.setAttribute("arr", courseArr);
+            req.setAttribute("mainRight", "manageCourse.jsp");
             req.getRequestDispatcher("main.jsp").forward(req, resp);
-        }else if (action.equals("signUp")) {
+        } else if (action.equals("signUp")) {
             String userAccount = req.getParameter("userAccount");
             String userName = req.getParameter("userName");
             String userBirthday = req.getParameter("userBirthday");
