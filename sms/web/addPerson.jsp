@@ -48,7 +48,6 @@
 
         <td>
           <select id="userIdentify" name="userIdentify" style="width: 205px" ;>
-            <%--                                绝密、机密、秘密、非秘级--%>
             <option id="a" value="0">student</option>
             <option id="b" value="1">teacher</option>
           </select>
