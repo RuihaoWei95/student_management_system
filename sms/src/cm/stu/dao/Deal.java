@@ -149,5 +149,50 @@ public class Deal {
         }
         return list;
     }
+
+    public static List<Course> getAllCourse(String sql) {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement pre = null;
+        ResultSet res = null;
+        List<Course> list = new ArrayList<>();
+        try {
+            pre =connection.prepareStatement(sql);
+            res = pre.executeQuery();
+            while(res.next()){
+                Course newCourse = new Course();
+                newCourse.setCourseName(res.getString("CourseName"));
+                newCourse.setCourseId(res.getString("CourseId"));
+                newCourse.setCourseTime(res.getString("CourseTime"));
+                list.add(newCourse);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }finally {
+        }
+        return list;
+    }
+
+    public static List<Course> getAllSCourse(String sql, String userAccount) {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement pre = null;
+        ResultSet res = null;
+        List<Course> list = new ArrayList<>();
+        try {
+            pre =connection.prepareStatement(sql);
+            pre.setString(1, userAccount);
+            res = pre.executeQuery();
+            while(res.next()){
+                Course course = new Course();
+                course.setCourseId(res.getString("courseId"));
+                course.setCourseName(res.getString("courseName"));
+                course.setCourseTime(res.getString("courseTime"));
+                list.add(course);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }finally {
+        }
+        return list;
+    }
 }
 
