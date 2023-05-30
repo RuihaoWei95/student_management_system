@@ -35,10 +35,24 @@ public class TeacherServlet extends HttpServlet {
             String courseId = req.getParameter("courseId");
             List<StudentGrade> arr = ts.getStudentGrade(courseId);
             req.setAttribute("arr", arr);
+            req.setAttribute("courseId", courseId);
             req.setAttribute("mainRight", "studentGrade.jsp");
             req.getRequestDispatcher("main.jsp").forward(req, resp);
 
 
+        } else if(action.equals("editScore")){
+            String studentAccount = req.getParameter("userAccount");
+            String sutdentCourseId = req.getParameter("courseId");
+            double studentScore = Double.parseDouble(req.getParameter("score"));
+            try {
+                ts.editScore(studentAccount,sutdentCourseId, studentScore);
+            } catch (Exception e) {
+
+            }
+            List<CourseGrade> arr = ts.getAllMyCourseGrade(userAccount);
+            req.setAttribute("arr", arr);
+            req.setAttribute("mainRight", "courseGrade.jsp");
+            req.getRequestDispatcher("main.jsp").forward(req, resp);
         }
     }
 }

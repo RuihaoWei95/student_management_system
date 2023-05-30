@@ -77,13 +77,13 @@ public class Deal {
             res = pre.executeQuery();
             while(res.next()){
                 StudentGrade studentGrade = new StudentGrade();
-                //'userName', 'userIdCard', 'score'
-                studentGrade.setUserAccount(res.getString("userName"));
+                //'userAccount','userName', 'userIdCard', 'score'
+                studentGrade.setUserAccount(res.getString("userAccount"));
+                studentGrade.setUserName(res.getString("userName"));
                 studentGrade.setUserIdCard(res.getString("userIdCard"));
                 studentGrade.setGrade(res.getDouble("score"));
                 list.add(studentGrade);
             }
-            System.out.println(list);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
