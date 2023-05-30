@@ -2,6 +2,7 @@ package cm.stu.dao;
 
 import cm.stu.bean.Course;
 import cm.stu.bean.Person;
+import cm.stu.bean.StudentCourse;
 
 import java.util.List;
 
@@ -27,4 +28,14 @@ public interface ManageDao {
     void addThisCourse(String courseName, String courseId, String courseTime) throws Exception;
 
     List<Course> getAllCourse();
+
+    void delThisStudentCourse(String uid) throws Exception;
+
+    void editThisStudentCourse(String uid, String userAccount, String courseId, Double score) throws Exception;
+
+    void addThisStudentCourse(String userAccount, String courseId, Double score) throws Exception;
+
+    List<StudentCourse> getAllCourseGrades();
+
+    List<Person> getAllStudent();
 }
