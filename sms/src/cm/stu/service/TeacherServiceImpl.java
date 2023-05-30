@@ -19,4 +19,9 @@ public class TeacherServiceImpl implements TeacherService{
         return td.getStudentGrade(courseId);
     }
 
+    @Override
+    public void editScore(String studentAccount, String courseId, double score) throws Exception {
+        td.editScore(studentAccount, courseId, score);
+    }
+
 }

@@ -15,8 +15,15 @@ public class TeacherDaoImpl implements TeacherDao{
 
     @Override
     public List<StudentGrade> getStudentGrade(String courseId) {
-        String sql = "SELECT p.userName, p.userIdCard, sc.score FROM course c INNER JOIN studentcourse sc ON c.courseId = sc.courseId INNER JOIN person p ON sc.userAccount = p.userAccount WHERE c.courseId = '" + courseId + "' ORDER BY sc.score DESC";
-        System.out.println(sql);
+        String sql = "SELECT p.userAccount, p.userName, p.userIdCard, sc.score FROM course c INNER JOIN studentcourse sc ON c.courseId = sc.courseId INNER JOIN person p ON sc.userAccount = p.userAccount WHERE c.courseId = '" + courseId + "' ORDER BY sc.score DESC";
+        //System.out.println(sql);
         return Deal.getStudentGrade(sql);
+    }
+
+    @Override
+    public void editScore(String studentAccount, String courseId, double score) throws Exception {
+        String sql = "UPDATE studentcourse SET score = '"+score+"' WHERE userAccount = '"+studentAccount+"' AND courseId = '"+courseId+ "'";
+        //System.out.println(sql);
+        Deal.deal(sql);
     }
 }

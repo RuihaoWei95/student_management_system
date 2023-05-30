@@ -9,4 +9,6 @@ public interface TeacherService {
     List<CourseGrade> getAllMyCourseGrade(String userAccount);
 
     List<StudentGrade> getStudentGrade(String courseId);
+
+    void editScore(String studentAccount, String courseId, double score) throws Exception;
 }
