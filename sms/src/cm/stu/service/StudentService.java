@@ -19,4 +19,5 @@ public interface StudentService {
     void deleteMyClass(String userAccount, String courseId) throws Exception;
 
     List<Course> getMyClass(String userAccount);
+
 }

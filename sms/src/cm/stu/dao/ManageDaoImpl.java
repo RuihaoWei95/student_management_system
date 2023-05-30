@@ -2,6 +2,7 @@ package cm.stu.dao;
 
 import cm.stu.bean.Course;
 import cm.stu.bean.Person;
+import cm.stu.bean.StudentCourse;
 import cm.stu.util.ConnectionFactory;
 
 import java.sql.Connection;
@@ -10,6 +11,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class ManageDaoImpl implements ManageDao{
     @Override
@@ -86,6 +91,46 @@ public class ManageDaoImpl implements ManageDao{
     public List<Course> getAllCourse() {
         String sql = "select * from course";
         return Deal.getAllCourse(sql);
+    }
+
+    @Override
+    public void delThisStudentCourse(String uid) throws Exception {
+        String sql = "DELETE FROM studentcourse WHERE UID = '"+uid+"'";
+        Deal.deal(sql);
+    }
+
+    @Override
+    public void editThisStudentCourse(String uid, String userAccount, String courseId, Double score) throws Exception {
+        String sql = "UPDATE studentcourse SET userAccount = '"+userAccount+"', courseId = '"+courseId+"', score = '"+score+"' WHERE UID = '"+uid+"'";
+        Deal.deal(sql);
+
+    }
+
+    @Override
+    public void addThisStudentCourse(String userAccount, String courseId, Double score) throws Exception {
+        long timestamp = System.currentTimeMillis();
+        Instant instant = Instant.ofEpochMilli(timestamp);
+        // Convert the Instant to a LocalDateTime
+        LocalDateTime dateTime = LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
+        // Define the desired date-time format
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        // Format the LocalDateTime using the formatter
+        String UID = dateTime.format(formatter);
+        String sql = "INSERT INTO studentcourse (UID, userAccount, courseId, score) VALUES ('" + UID + "', '" + userAccount + "', '" + courseId + "', '" + score + "')";
+        Deal.deal(sql);
+
+    }
+
+    @Override
+    public List<StudentCourse> getAllCourseGrades() {
+        String sql = "SELECT * FROM studentcourse";
+        return Deal.getStudentCourse(sql);
+    }
+
+    @Override
+    public List<Person> getAllStudent() {
+        String sql = "Select * from person where userIdentify = 0";
+        return Deal.getAllPerson(sql);
     }
 
 }

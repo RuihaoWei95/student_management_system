@@ -1,9 +1,10 @@
 package cm.stu.servlet;
 
-import cm.stu.bean.Course;
-import cm.stu.bean.Person;
+import cm.stu.bean.*;
 import cm.stu.service.ManageService;
 import cm.stu.service.ManageServiceImpl;
+import cm.stu.service.StudentService;
+import cm.stu.service.StudentServiceImpl;
 import cm.stu.util.Test;
 
 import javax.servlet.ServletException;
@@ -94,7 +95,52 @@ public class ManageServlet extends HttpServlet {
             req.setAttribute("arr", courseArr);
             req.setAttribute("mainRight", "manageCourse.jsp");
             req.getRequestDispatcher("main.jsp").forward(req, resp);
-        } else if (action.equals("signUp")) {
+        } else if (action.equals("studentcourse")|| action.equals("delThisStudentCourse") || action.equals("editThisStudentCourse") || action.equals("addThisStudentCourse")) {
+            if(action.equals("delThisStudentCourse")){
+                String UID = req.getParameter("UID");
+                try {
+                    ms.delThisStudentCourse(UID);
+                } catch (Exception e) {
+
+                }
+            }else if(action.equals("editThisStudentCourse")){
+                String UID = req.getParameter("UID");
+                String userAccount = req.getParameter("userAccount");
+                String courseId = req.getParameter("courseId");
+                double score = Double.parseDouble(req.getParameter("score"));
+                try {
+                    //System.out.println(UID);
+                    //System.out.println(userAccount);
+                    //System.out.println(courseId);
+                    //System.out.println(score);
+                    ms.editThisStudentCourse(UID,userAccount,courseId,score);
+                } catch (Exception e) {
+
+                }
+            }else if(action.equals("addThisStudentCourse")){
+                String userAccount = req.getParameter("userAccount");
+                String courseId = req.getParameter("courseId");
+                double score = Double.parseDouble(req.getParameter("score"));
+                try {
+                    ms.addThisStudentCourse(userAccount,courseId,score);
+                } catch (Exception e) {
+
+                }
+            }
+            List<StudentCourse> studentCourseArr;
+            studentCourseArr = ms.getAllCourseGrades();
+            List<Course> courseArr;
+            courseArr = ms.getAllCourse();
+            List<Person> studentArr;
+            studentArr = ms.getAllStudent();
+            req.setAttribute("studentArr", studentArr);
+            req.setAttribute("courseArr", courseArr);
+            req.setAttribute("arr", studentCourseArr);
+            req.setAttribute("mainRight", "studentcourse.jsp");
+            req.getRequestDispatcher("main.jsp").forward(req, resp);
+        }
+        // signUp
+        else if (action.equals("signUp")) {
             String userAccount = req.getParameter("userAccount");
             String userName = req.getParameter("userName");
             String userBirthday = req.getParameter("userBirthday");
