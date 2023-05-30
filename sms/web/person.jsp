@@ -70,14 +70,7 @@
 </head>
 <body>
 
-<div id="content">
-  <div style="float: right;height: 70px">
-    <form action="man.action?action=search" method="post">
-      <input type="text" name="matchText" value="search by user name" style="height: 35px;width: 500px;font-size: 28px;color: darkslateblue;border: grey solid 1px;">
-      <input type="submit" style="margin-left: 6px;margin-right: 30px" value="search">
-    </form>
-  </div>
-</div>
+
 <br><br>
 <table border="1" cellspacing="0" align="center" class="con-b">
   <thead>

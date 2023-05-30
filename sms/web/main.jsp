@@ -59,6 +59,7 @@
         <li id="file"><a href="man.action?action=personlist">user management</a></li>
         <li id="file"><a href="man.action?action=courselist">course management</a></li>
         <li id="file"><a href="man.action?action=studentcourse">student course management</a></li>
+        <li id="file"><a href="man.action?action=teachercourse">teacher course management</a></li>
         <li id="file"><a href="common.action?action=goMyDetail">my profile</a></li>
         <li id="file"><a href="outLogin">exist</a></li>
     </c:if>

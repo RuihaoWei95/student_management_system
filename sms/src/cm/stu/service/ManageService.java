@@ -3,6 +3,7 @@ package cm.stu.service;
 import cm.stu.bean.Course;
 import cm.stu.bean.Person;
 import cm.stu.bean.StudentCourse;
+import cm.stu.bean.TeacherCourse;
 
 import java.util.List;
 
@@ -40,5 +41,15 @@ public interface ManageService {
     List<StudentCourse> getAllCourseGrades();
 
     List<Person> getAllStudent();
+
+    void delThisTeacherCourse(String uid) throws Exception;
+
+    void editThisTeacherCourse(String uid, String userAccount, String courseId) throws Exception;
+
+    void addThisTeacherCourse(String userAccount, String courseId) throws Exception;
+
+    List<TeacherCourse> getAllTeacherCourse();
+
+    List<Person> getAllTeacher();
 }
 

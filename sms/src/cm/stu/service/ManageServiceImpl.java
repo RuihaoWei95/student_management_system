@@ -3,6 +3,7 @@ package cm.stu.service;
 import cm.stu.bean.Course;
 import cm.stu.bean.Person;
 import cm.stu.bean.StudentCourse;
+import cm.stu.bean.TeacherCourse;
 import cm.stu.dao.ManageDao;
 import cm.stu.dao.ManageDaoImpl;
 
@@ -88,6 +89,31 @@ public class ManageServiceImpl implements ManageService{
     @Override
     public List<Person> getAllStudent() {
         return md.getAllStudent();
+    }
+
+    @Override
+    public void delThisTeacherCourse(String uid) throws Exception {
+        md.delThisTeacherCourse(uid);
+    }
+
+    @Override
+    public void editThisTeacherCourse(String uid, String userAccount, String courseId) throws Exception {
+        md.editThisTeacherCourse(uid,userAccount,courseId);
+    }
+
+    @Override
+    public void addThisTeacherCourse(String userAccount, String courseId) throws Exception {
+        md.addThisTeacherCourse(userAccount,courseId);
+    }
+
+    @Override
+    public List<TeacherCourse> getAllTeacherCourse() {
+        return md.getAllTeacherCourse();
+    }
+
+    @Override
+    public List<Person> getAllTeacher() {
+        return md.getAllTeacher();
     }
 
 

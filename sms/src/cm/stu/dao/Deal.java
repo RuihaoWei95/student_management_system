@@ -194,5 +194,27 @@ public class Deal {
         }
         return list;
     }
+
+    public static List<TeacherCourse> getTeacherCourse(String sql) {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement pre = null;
+        ResultSet res = null;
+        List<TeacherCourse> list = new ArrayList<>();
+        try {
+            pre =connection.prepareStatement(sql);
+            res = pre.executeQuery();
+            while(res.next()){
+                TeacherCourse record = new TeacherCourse();
+                record.setUID(res.getString("UID"));
+                record.setUserAccount(res.getString("userAccount"));
+                record.setCourseId(res.getString("courseId"));
+                list.add(record);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }finally {
+        }
+        return list;
+    }
 }
 
