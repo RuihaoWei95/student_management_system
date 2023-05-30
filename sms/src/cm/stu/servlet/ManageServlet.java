@@ -139,6 +139,45 @@ public class ManageServlet extends HttpServlet {
             req.setAttribute("mainRight", "studentcourse.jsp");
             req.getRequestDispatcher("main.jsp").forward(req, resp);
         }
+
+        else if (action.equals("teachercourse")|| action.equals("delThisTeacherCourse") || action.equals("editThisTeacherCourse") || action.equals("addThisTeacherCourse")) {
+            if(action.equals("delThisTeacherCourse")){
+                String UID = req.getParameter("UID");
+                try {
+                    ms.delThisTeacherCourse(UID);
+                } catch (Exception e) {
+
+                }
+            }else if(action.equals("editThisTeacherCourse")){
+                String UID = req.getParameter("UID");
+                String userAccount = req.getParameter("userAccount");
+                String courseId = req.getParameter("courseId");
+                try {
+                    ms.editThisTeacherCourse(UID,userAccount,courseId);
+                } catch (Exception e) {
+
+                }
+            }else if(action.equals("addThisTeacherCourse")){
+                String userAccount = req.getParameter("userAccount");
+                String courseId = req.getParameter("courseId");
+                try {
+                    ms.addThisTeacherCourse(userAccount,courseId);
+                } catch (Exception e) {
+
+                }
+            }
+            List<TeacherCourse> teacherCourseArr;
+            teacherCourseArr = ms.getAllTeacherCourse();
+            List<Course> courseArr;
+            courseArr = ms.getAllCourse();
+            List<Person> teacherArr;
+            teacherArr = ms.getAllTeacher();
+            req.setAttribute("teacherArr", teacherArr);
+            req.setAttribute("courseArr", courseArr);
+            req.setAttribute("arr", teacherCourseArr);
+            req.setAttribute("mainRight", "teachercourse.jsp");
+            req.getRequestDispatcher("main.jsp").forward(req, resp);
+        }
         // signUp
         else if (action.equals("signUp")) {
             String userAccount = req.getParameter("userAccount");

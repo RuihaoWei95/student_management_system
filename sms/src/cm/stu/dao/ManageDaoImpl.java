@@ -3,6 +3,7 @@ package cm.stu.dao;
 import cm.stu.bean.Course;
 import cm.stu.bean.Person;
 import cm.stu.bean.StudentCourse;
+import cm.stu.bean.TeacherCourse;
 import cm.stu.util.ConnectionFactory;
 
 import java.sql.Connection;
@@ -130,6 +131,45 @@ public class ManageDaoImpl implements ManageDao{
     @Override
     public List<Person> getAllStudent() {
         String sql = "Select * from person where userIdentify = 0";
+        return Deal.getAllPerson(sql);
+    }
+
+    @Override
+    public void delThisTeacherCourse(String uid) throws Exception {
+        String sql = "DELETE FROM teachercourse WHERE UID = '"+uid+"'";
+        Deal.deal(sql);
+    }
+
+    @Override
+    public void editThisTeacherCourse(String uid, String userAccount, String courseId) throws Exception {
+        String sql = "UPDATE teachercourse SET userAccount = '"+userAccount+"', courseId = '"+courseId+"' WHERE UID = '"+uid+"'";
+        Deal.deal(sql);
+
+    }
+
+    @Override
+    public void addThisTeacherCourse(String userAccount, String courseId) throws Exception {
+        long timestamp = System.currentTimeMillis();
+        Instant instant = Instant.ofEpochMilli(timestamp);
+        // Convert the Instant to a LocalDateTime
+        LocalDateTime dateTime = LocalDateTime.ofInstant(instant, java.time.ZoneId.systemDefault());
+        // Define the desired date-time format
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        // Format the LocalDateTime using the formatter
+        String UID = dateTime.format(formatter);
+        String sql = "INSERT INTO teachercourse (UID, userAccount, courseId) VALUES ('" + UID + "', '" + userAccount + "', '" + courseId + "')";
+        Deal.deal(sql);
+    }
+
+    @Override
+    public List<TeacherCourse> getAllTeacherCourse() {
+        String sql = "SELECT * FROM teachercourse";
+        return Deal.getTeacherCourse(sql);
+    }
+
+    @Override
+    public List<Person> getAllTeacher() {
+        String sql = "Select * from person where userIdentify = 1";
         return Deal.getAllPerson(sql);
     }
 

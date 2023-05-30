@@ -47,6 +47,6 @@ public class StudentDaoImpl implements StudentDao{
     @Override
     public List<Course> getMyClass(String userAccount) {
         String sql = "SELECT c.CourseId, c.CourseName, c.CourseTime FROM studentcourse sc INNER JOIN course c ON sc.courseId = c.courseId WHERE userAccount = ?;";
-        return Deal.getAllSCourse(sql, userAccount); // 将 userAccount 作为参数传递给 getAllSCourse 方法
+        return Deal.getAllSCourse(sql, userAccount);
     }
 }

@@ -61,29 +61,7 @@
 
 <%--<div style=" width:1300px;height:100px;margin-lef:450px;background-color: aliceblue;border: red 1px solid"></div>--%>
 
-<div id="content">
-  <%--   searchMyStudent matchText--%>
-  <div  style="float: right;height: 70px">
 
-    <c:if test="${session_person.getUserIdentify()==0}">
-    <form action="student.action?action=searchCourse"  method="post">
-      </c:if>
-      <c:if test="${session_person.getUserIdentify()==1}">
-      <form action="tea.action?action=searchMyStudent"  method="post">
-        </c:if>
-        <c:if test="${session_person.getUserIdentify()==2}">
-        <form action="man.action?action=search"  method="post">
-          </c:if>
-          <input type="text" name="matchText" style="height: 35px;width: 500px;font-size: 28px;color: darkslateblue;border: grey solid 1px;">
-
-          <input type="submit" style="margin-left: 6px;margin-right: 30px" value="search">
-
-
-
-        </form>
-  </div>
-
-</div>
 <br><br>
 <table border="1" cellspacing="0" align="center" class="con-b">
   <thead>
