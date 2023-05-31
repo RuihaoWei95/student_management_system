@@ -128,7 +128,7 @@
         <form id="editForm">
           <input type="hidden" id="editUID" name="UID">
           <select id="editUserAccount" name="userAccount" style="width: 100%;" required>
-            <c:forEach items="${personArr}" var="person">
+            <c:forEach items="${studentArr}" var="person">
               <option value="${person.userAccount}">${person.userAccount}</option>
             </c:forEach>
           </select>
