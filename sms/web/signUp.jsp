@@ -71,11 +71,18 @@
             <script>
 
                 function checkThis() {
+                    let userAccount = document.getElementById("userAccount").value;
                     let userName = document.getElementById("userName").value;
                     let userIdCard = document.getElementById("userIdCard").value;
-                    let nikeName = document.getElementById("nikeName").value;
                     let userPassword = document.getElementById("userPassword").value;
                     let rUserPassword = document.getElementById("rUserPassword").value;
+
+
+                    if (userAccount.trim() == null || userAccount.trim() == "") {
+                        document.getElementById("error").innerHTML = "Account cannot be empty";
+                        return false;
+                    }
+
                     if (userName.trim() == null || userName.trim() == "") {
                         document.getElementById("error").innerHTML = "Name can not be empty";
                         return false;
@@ -103,6 +110,12 @@
                         return false;
                     }
 
+                    // Regular expression to validate email address
+                    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if(emailRegex.test(userAccount) === false){
+                        alert("illegal email address!");
+                        return false;
+                    }
                     return true;
 
 
