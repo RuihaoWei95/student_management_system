@@ -24,8 +24,8 @@ A simple local host web application that allows student to manage course and tea
 3. If not configured, add WEB-INF/lib as library
 4. If not configured, add Tomcat as library
 5. If not configured, configured Tomcat 
-6. Execute sms.sql SQL script to create database with precreated data.
-7. Under 'src/c3p0-config.xml', change the "user" and "password" to local MySQL username and password to connect to local MySQL database.
+6. Execute sms.sql SQL script to create database with precreated data. If can't execute SQL script, create a new database named 'sms'.
+7. Under 'src/c3p0-config.xml', change the "user" and "password" to local MySQL username and password to connect to local MySQL database. 
 
 ## Usage
 1. Run Tomcat to deploy.
